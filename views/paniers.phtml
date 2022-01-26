@@ -1,0 +1,22 @@
+<header>
+	<h2>Votre Panier</h2>
+</header>
+
+<div class='container'>
+
+      <br><br><div class='container'><table class='table table-dark table-hover'>
+	        <tr><td colspan=5 align=center> Panier d'achat</td></tr>
+      <tr><td>Titre</td><td>Id Produit</td><td >Quantité</td><td >Prix unitaire</td><td >Action</td></tr>
+
+	  <?php foreach ($paniers as $panier) : ?>
+      <tr><td><?=$panier['titre']?></td><td><?=$panier['id_produit']?></td><td><?=$panier['qteProduit']?></td><td><?=$panier['prixProduit']?>$</td><td> <a href=mvc_pr/panier?idd=<?=$panier['id_produit']?>><input type=submit name=supprimer value=supprimer></a> </td></tr>
+	  <?php endforeach ?>
+
+      <tr><td colspan=3 align=center> Total</td><td colspan=2> <?=$total?> $</td></tr>
+      <tr><td colspan=5 align=center> <a href=mvc_pr/panier?param2=valider><input type=submit name=valider value=valider et declarer le paiement> </a></td></tr>
+      <tr><td colspan=5 align=center> <a href=mvc_pr/panier?param=delete> Vider mon panier</a></td></tr>
+      <tr><td colspan=5 align=center> <a href=mvc_pr/produit> Retourn au magasin</a></td></tr>
+      </table></div>
+</div>
+	
+</section>

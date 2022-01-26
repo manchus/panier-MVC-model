@@ -1,0 +1,47 @@
+<h2>Les détails du produit</h2>
+<table>
+		<div class='container'>
+			<div class='card' style='width: 18rem;'>
+				<img class='card-img-top' src="./mvc_pr/photo/<?=$photo?>" alt='Card image cap'>
+				<div class='card-body'>
+					<h5 class='card-title'> <?= strtoupper($titre_fr) ?></h5>
+					<p class='card-text'> <?=$description_fr?><p>
+				</div>
+				<ul class='list-group list-group-flush'>
+					<li class='list-group-item'> Catégorie: <?= $categorie ?></li>
+					<li class='list-group-item'> Prix: <?= $prix ?> $</li>
+				</ul>
+				<div class='card-body'>
+					<form name=panier action="mvc_pr/produit" method=POST>
+						Quantité : <select name=qte>
+						<?php for( $i = 1 ; $i <= intval($stock) ; $i++ ){?>
+								<option value=" <?=$i?> "> <?=$i?></option>
+							<?php } ?>
+						</select>   <?=$unit_achat?>   
+						<input type=hidden name=ajout > 
+						<input type=hidden name=produit value=" <?= $id ?>">
+						<?php if (isset($_SESSION['logged_in_user_id'])) { ?>
+           						 <input type=submit id='image-button' value='  '>
+  						<?php }
+  						else { ?> <input type=submit id='image-button' value=' ' disabled ='true' data-placement='bottom' 
+           								 title='Connectez-vous pour faire vos achats'> 
+						<?php } ?>
+
+
+					</form>
+					<a href = mvc_pr/produit> Retour vers la sélection des produits</a><br>
+				</div>
+			</div>
+		</div>   
+
+</table>
+
+
+
+
+
+
+	<li>
+	<a href="mvc_pr/modify?id=<?= $article_id ?>">Delete</a>
+		
+	</li>

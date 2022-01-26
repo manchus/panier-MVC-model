@@ -1,0 +1,59 @@
+<header>
+	<h2>Panier Achat</h2>
+</header>
+
+<div class='container'>
+  <h2 class=''>Details de la commande</h2>
+  <h4 class=''>Commande Numero: <?=$n_fact?> <h4>
+  <h4 class=''>Nombre d'articles commandés:<?=$count?><h4></br>
+  <h3 class=''>Liste des articles:</h3>
+  <div style='text-align:center;' >
+  <table class='' style='margin: 0 auto;'>
+    <?php $i=0 ?> 
+    <?php foreach ($paniers as $panier) : ?>
+      <tr><td> Article <?=$i?>:</td><td><tr><td><?=$panier['titre']?>(<?=$panier['qteProduit']?>)</td><td><?=$panier['prixProduit']?></td></tr>
+    <?php endforeach ?>
+  </table></div><br>
+  <div style='text-align:center;' ><table class='' style='margin: 0 auto;'>
+  <tr><td><h5 class=''>Montant du panier:</h5></td><td> <h5 class=''><?=$total?></h5></td></tr>
+
+  <tr><td><h5 class=''>Frais de livraison:</h5></td><td> <h5 class=''> $0 </h5></td></tr>
+
+  <tr><td><h5 class=''>Taxes:</h5></td><td> <h5 class=''> <?php(round($total*0.14975,2))?></h5></td></tr>
+  <tr><td><h5 class=''>Montant total à payer:</h5></td><td> <h3 class=''> 
+              $<?=$total?></h3></td></tr>
+  </table></div><br>
+</div>
+
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+<input name="amount" type="hidden" value="<?=$total?>" />
+<input name="currency_code" type="hidden" value="CAD" />
+<input name="shipping" type="hidden" value="transport" />
+<input name="tax" type="hidden" value="<?php echo "".(round($total*0.14975,2)); ?>" />
+<input name="return" type="hidden" value="https://lepicery.000webhostapp.com/traitement.php" />
+<input name="cancel_return" type="hidden" value="https://lepicery.000webhostapp.com/traitement.php" />
+
+<input name="notify_url" type="hidden" value="https://lepicery.000webhostapp.com/traitement.php" />
+
+<input name="cmd" type="hidden" value="_xclick" />
+
+<input name="business" type="hidden" value="sb-yevdm2647418@business.example.com" />
+
+<input name="item_name" type="hidden" value="Merci pour ton achat" />
+
+<input name="no_note" type="hidden" value="1" />
+
+<input name="lc" type="hidden" value="CA" />
+
+<input name="bn" type="hidden" value="PP-BuyNowBF" />
+
+<input name="custom" type="hidden" value="12542A" />
+<input type="hidden" name="rm" value="2">
+
+<input type="hidden" name="hosted_button_id" value="YHBA79U52ETAA">
+<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+	
+</section>

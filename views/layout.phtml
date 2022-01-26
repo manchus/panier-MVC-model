@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<base href="/localhost" />
+	<meta charset="UTF-8" />
+	<title><?= $title ?></title>
+	<meta name="description" content="<?= $description ?>" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="mvc_pr/style.css" />
+</head>
+
+<body>
+<?php require_once("inc/haut.inc.php"); ?>
+<div class='container'>
+
+<header>
+
+	<?php require_once("inc/carousel.inc.php");?>
+
+</header>
+
+
+<br clear="both" />
+
+<article>
+	<?php $this->controller->renderView(); // renders the current view into the template ?>
+</article>
+
+<footer>
+	
+</footer>
+</div>
+</body>
+</html>

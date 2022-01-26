@@ -1,0 +1,136 @@
+
+
+h1 {
+	text-align: center;
+	color: #444444;
+	text-shadow: 3px 3px 3px #aaaaaa;
+}
+
+footer {
+	font-size: 11px;
+	text-align: center;
+	padding-top: 20px;
+}
+
+article {
+	text-shadow: 3px 3px 3px #aaaaaa;
+}
+
+nav ul {
+	list-style-type: none;
+}
+
+nav li {
+	float: left;
+	margin-right: 15px;
+}
+
+
+/* Forms */
+
+input[type="submit"] {
+	background: #6FA4F8;
+	color: white;
+	padding: 5px 10px;
+	border-radius: 10px;
+	border: 0px;
+}
+
+input[type="submit"]:hover {
+	background: #2976f8;
+	color: #EEEEEE;
+	cursor: pointer;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+	width: 250px;
+	border-radius: 5px;
+	border: 1px solid #aaaaaa;
+	padding: 0.3em;
+}
+
+input[type="submit"] {
+	padding: 10px 25px;
+	display: block;
+	margin: 0 auto;
+	font-weight: bold;
+}
+
+textarea {
+	border-radius: 5px;
+	border: 1px solid #aaaaaa;
+	width: 483px;
+	height: 90px;
+}
+
+
+/**************************************************** GENERAL ************************************************/
+*{ margin: 0;}
+body{ font-family: verdana; font-size: 12px; }​​
+
+a{ text-decoration: none; color: #000;}
+
+.conteneur{ margin: 0 auto; max-width: 1170px;}
+
+/**************************************************** HAUT ************************************************/
+
+header span{ color: #fff; font-weight: bold; text-transform: uppercase; margin-right: 5%;}
+header nav{display: inline;}
+header a{color: #eeeeee; text-decoration: none; padding: 5px 5px;}
+header nav a:hover{background: #04baf6;}
+
+/**************************************************** MILIEU ************************************************/
+
+section{padding: 30px;min-height: 800px;}
+
+/**************************************************** BAS ************************************************/
+​​​
+footer{background: #000; color: white; text-align: center; padding: 7px 0;}
+
+/**************************************************** GENERAL ************************************************/
+
+.erreur{background: #ff0000; padding: 5px; margin: 5px;}
+
+.validation{background: #669933; padding: 5px; margin: 5px;}
+
+.cadre{border:1px solid #c0c0c0; width: 30%;}
+
+.cadre h2{background: #c0c0c0; margin: 0; text-align: center; font-size: 15px; padding: 5px;}
+
+.cadre p{padding: 10px;}
+
+.centre{text-align: center;}
+
+/**************************************************** BOUTIQUE ************************************************/
+
+.boutique-gauche{float:left; width: 30%; background: #f2f2f2; min-height: 500px; margin-right: 10%; padding-top: 10px; text-align: center;}
+
+.boutique-gauche ul{list-style: none; padding: 0;}
+
+.boutique-gauche ul li a{ display: block; padding: 10px;}
+
+.boutique-gauche ul li a:hover{background: #04baf6; color: #fff;}
+
+.boutique-droite{float:inherit;width: 90%;}
+
+.boutique-produit{float: left; width: 25%; text-align: center; padding: 5%; border-bottom: 1px solid #c0c0c0;}
+
+.boutique-produit:hover{background: #c0c0c0;}
+
+/**************************************************** DIVERS ************************************************/
+
+
+
+table{border-collapse: collapse;}
+
+table tbody tr td{ text-align: left}
+table thead tr td{ text-align: center}
+
+td, th{padding: 5px;}
+
+input#image-button{
+    background: #ccc url('icons/add-to-cart.png') no-repeat top left;
+    padding-left: 16px;
+    height: 40px;
+    width: 40px;
+}

@@ -1,0 +1,70 @@
+<h3>Administrateur: <?=$prenom?> <?=$nom?></h3>
+<h4><a href="./mvc_pr/admin"  class="text-muted text-decoration-none">Produit Page</a>>Liste de Utilisateurs</h4>
+<br>
+<div class="container">
+
+  <table class="table"> 
+    <thead>
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Prenom</th>
+        <th scope="col">Telephone</th>
+        <th scope="col">Email</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody >
+    <?php foreach ($clients as $client) : ?>
+      <tr>
+        <td style="text-align: left"><?=$client['nom']?></td>
+        <td style="text-align: left"><?=$client['prenom']?></td>
+        <td style="text-align: left"><?=$client['phone_number']?></td>
+        <td><?=$client['email']?></td>
+        <td>
+          <a href="./mvc_pr/admin/<?=$client['id']?>/delete"  class="text-muted text-decoration-none"><i class='far fa-trash-alt' style='font-size:32px;color:red'></i></a>
+        </td>
+
+      </tr>
+    <?php endforeach ?>
+  </table>
+</div>
+
+<form id="datautilisateurform"  method="post" action="mvc_pr/admin">
+<div class="modal fade" id="datautilisateur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Mettre à jour les donnes de l'utilisateur</h4>
+      </div>
+      <div class="modal-body">
+			<div id="datos_ajax_register"></div>
+          <div class="form-group">
+            <label for="codigo0" class="control-label">Nom:</label>
+            <input type="text" class="form-control" id="nom" name="nom" value="<?=$client['id']?>"required maxlength="40">
+		  </div>
+      <div id="datos_ajax_register"></div>
+          <div class="form-group">
+            <label for="codigo0" class="control-label">Prenom:</label>
+            <input type="text" class="form-control" id="prenom" name="prenom" required maxlength="40">
+		  </div>
+      <div id="datos_ajax_register"></div>
+          <div class="form-group">
+            <label for="codigo0" class="control-label">Téléphone:</label>
+            <input type="text" class="form-control" id="telephone" name="telephone" required maxlength="40">
+		  </div>
+		  <div class="form-group">
+            <label for="nombre0" class="control-label">Adresse:</label>
+            <input type="password" class="form-control" id="adresse" name="adresse" required maxlength="20">
+          </div>
+          <input type="hidden" name="id" value='<?$client['id']?>''>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">ANNULER</button>
+        <button type="submit" class="btn btn-primary">Misse a jour</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#dataregister">CRÉER UN COMPTE</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>

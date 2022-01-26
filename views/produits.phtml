@@ -1,0 +1,14 @@
+<h1>Produits list</h1>
+<table>
+<div class="boutique-droite">
+<?php foreach ($produits as $produit) : ?>
+      <div class="boutique-produit" >
+		<h3><?=$produit['titre_fr']?></h3>
+		<a href="./mvc_pr/produit/<?=$produit['id']?>"><img src="./mvc_pr/photo/<?=$produit['photo']?>" width="130" height="100" /></a>
+		<p><?=$produit['prix']?> €</p>
+		<a href="./mvc_pr/produit/<?=$produit['id']?>">Voir la fiche</a>
+		</div>
+	  <?php endforeach ?>
+  </div>
+</table>
+

@@ -1,0 +1,123 @@
+<h3>Administrateur: <?= $prenom ?> <?= $nom ?></h3>
+<h4><a href="./mvc_pr/admin" class="text-muted text-decoration-none">Produit Page</a>>Liste de Produit</h4>
+<br>
+<div class="container">
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Quantité</th>
+        <th scope="col" id="optProd">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($produits as $produit) : ?>
+        <tr>
+          <td><img src="./mvc_pr/photo/<?= $produit['photo'] ?>" width="52" height="40" /></td>
+          <td style="text-align: left"><?= $produit['titre_fr'] ?></td>
+          <td id="prix<?= $produit['id'] ?>"><?= $produit['prix'] ?> $</td>
+          <td id="stock<?= $produit['id'] ?>"><?= $produit['stock'] ?></td>
+          <td>
+            <a href="./mvc_pr/admin/<?= $produit['id'] ?>/delete" class="text-muted text-decoration-none"><i class='far fa-trash-alt' style='font-size:32px;color:red'></i></a>
+            <a id="termino<?= $produit['id'] ?>" data-toggle="modal" data-target="#dataproduit" onclick="getProduitById(<?= $produit['id'] ?>)" class="text-muted text-decoration-none"><i class='far fa-edit' style='font-size:32px;color:green'></i></a>
+
+          </td>
+        </tr>
+      <?php endforeach ?>
+  </table>
+</div>
+
+<form id="guardarDatos" method="post" action="mvc_pr/admin">
+  <div class="modal fade" id="dataproduit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="exampleModalLabel">Mettre à jour le produit</h4>
+        </div>
+        <div class="modal-body">
+          <div id="datos_ajax_register"></div>
+          <div class="form-group">
+            <label for="codigo0" class="control-label">Nom:</label>
+            <input type="text" class="form-control" id="nomprod" name="nomprod" readonly="readonly" required maxlength="40">
+          </div>
+          <div id="datos_ajax_register"></div>
+          <div class="form-group">
+            <label for="codigo0" class="control-label">Prix:</label>
+            <input type="text" class="form-control" id="prixprod" name="prixprod" required maxlength="40">
+          </div>
+          <div class="form-group">
+            <label for="nombre0" class="control-label">Quantité:</label>
+            <input type="text" class="form-control" id="quantiteprod" name="quantiteprod" required maxlength="20">
+          </div>
+          <input type="hidden" id="idprod" name="idprod">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">ANNULER</button>
+          <button type="button" class="btn btn-primary"  onclick="updateProduit()">MISE A JOUR LE PRODUIT</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<script>
+  function getProduitById(idProduit) {
+    var parametros = {
+      "product_id": idProduit
+    }
+    $.ajax({
+      data: parametros,
+      url: 'mvc_pr/admin/' + idProduit + '/find',
+      type: 'post',
+      beforeSend: function() {},
+      success: function(response) {
+        console.log(response.substr(0, response.indexOf(']') + 1));
+        data = $.parseJSON(response.substr(0, response.indexOf(']') + 1))
+        console.log(data);
+        console.log(idProduit);
+        console.log(data[0]['nom']);
+        console.log(data[0]['prix']);
+        console.log(data[0]['quantite']);
+        if (data.length > 0) {
+          $('#idprod').val(idProduit),
+            $('#nomprod').val(data[0]['nom']),
+            $('#prixprod').val(data[0]['prix'])
+          $('#quantiteprod').val(data[0]['quantite'])
+        }
+
+      }
+    });
+  };
+
+  function updateProduit() {
+    idProduit = $('#idprod').val()
+    prix = $('#prixprod').val()
+    stock = $('#quantiteprod').val()
+    var parametros = {
+      "product_id": idProduit,
+      "prix": prix,
+      "stock": stock
+    }
+    $.ajax({
+      data: parametros,
+      url: 'mvc_pr/admin/' + idProduit + '/update',
+      type: 'post',
+      beforeSend: function() {},
+      success: function(response) {
+        console.log(response.status);
+        if (response != 1){
+          console.log('Success: '+'#prix'.idProduit);
+          $('#prix'.idProduit).val(prix);
+          $('#stock'.idProduit).val(stock);
+        }
+        else
+          console.log('Fail');
+
+      }
+    });
+  };
+</script>
